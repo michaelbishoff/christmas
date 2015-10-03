@@ -1,0 +1,24 @@
+#filterText {
+  padding-top: 5%;
+}
+
+#nameList {
+  padding-bottom: 2%; 
+}
+
+.bottom {
+    clear: both;
+/*    position: absolute;*/
+    bottom: 0;
+    width: 100%;
+}
+
+.collection-item h5 {
+  color: #E45C46;
+}
+
+/*
+.collection-item.active a {
+  color: white !important;
+  background-color: #E45C46 !important;
+}*/

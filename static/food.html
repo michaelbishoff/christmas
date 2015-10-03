@@ -1,0 +1,175 @@
+<DOCTYPE html!>
+<html ng-app>
+  <head>
+    <title>Express</title>
+    <link rel='stylesheet' href="/node_modules/materialize-css/dist/css/materialize.min.css"/>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/food.css'/>
+    <link rel='stylesheet' href='/stylesheets/core.css'/>
+
+    <script src="/node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+  </head>
+  <body class="green">
+
+    <div class="navbar-fixed">
+      <nav class="red">
+        <div class="nav-wrapper">
+          <a href="/home" class="brand-logo white-text logo">Merry Christmas!</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="white-text" href="/home">Home</a></li>
+            <li><a class="white-text" href="/wishes">Wishes</a></li>
+            <li class="active"><a class="white-text" href="#">Food</a></li>
+            <li><a class="white-text" href="/">Logout</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a class="white-text" href="/home">Home</a></li>
+            <li><a class="white-text" href="/wishes">Wishes</a></li>
+            <li class="active"><a class="white-text" href="#">Food</a></li>
+            <li><a class="white-text" href="/">Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="intro red z-depth-1">
+      <h1 class="grey-text text-lighten-5">Food</h1>
+      
+      <div class="container">
+        
+      </div>
+      
+<!--      <h5 clas="grey lighten-4 grey-text text-darken-1">web and mobile developer</h5>-->
+    </div>
+    
+    <div class="container white round z-depth-1">
+      <div class="row">
+        <div class="col s4 offset-s2">
+          <h5 id="filterText" class="grey-text text-darken-1">Filter by name or food:</h5>
+        </div>
+        <div class="input-field col s3">
+            <input id="filter" type="text" class="validate">
+            <label for="filter">Name/item</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s3 offset-s2">
+          <h5 class="grey-text text-darken-1">Add new item:</h5>
+        </div>
+        <div class="input-field col s3">
+            <input id="item" type="text" class="validate">
+            <label for="item" data-error="missing!">Item</label>
+        </div>
+        <div class="input-field col s2">
+            <input id="name" type="text" class="validate">
+            <label for="name">Name</label>
+        </div>
+        <div class="input-field col s1">
+          <button id="add" onclick="addItem()" class="btn-floating btn-large waves-effect waves-light blue">
+            <i class="material-icons">add</i>
+          </button>
+<!--          <a class="btn-floating btn-large waves-effect waves-light blue"><i class="material-icons">add</i></a>-->
+        </div>
+
+      </div>
+      
+      <div id="foodList" class="container">
+        <table class="responsive-table highlight">
+          <thead>
+            <tr>
+              <th data-field="id">Food</th>
+              <th data-field="name">Who's Bringing it</th>
+            </tr>
+          </thead>
+          
+          <tbody id="table">
+            <tr id="item0">
+              <td onclick="edit(this)" onfocusout="save(this)">BEVERAGE - BEER: Bud Light & Miller</td>
+              <td onclick="edit(this)" onfocusout="save(this)">Sheila</td>
+              <td><a href="#!" onclick="deleteItem('item0')"><i class="material-icons">delete</i></a></td>
+            </tr>
+            <tr id="item1">
+              <td onclick="edit(this)" onfocusout="save(this)">Carrot souffle</td>
+              <td onclick="edit(this)" onfocusout="save(this)">Sheila</td>
+              <td><a href="#!" onclick="deleteItem('item1')"><i class="material-icons">delete</i></a></td>
+            </tr>
+            <tr id="item2">
+              <td onclick="edit(this)" onfocusout="save(this)">More Beer</td>
+              <td onclick="edit(this)" onfocusout="save(this)">Sheila</td>
+              <td><a href="#!" onclick="deleteItem('item2')"><i class="material-icons">delete</i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+    
+    <footer class="page-footer transparent bottom">
+      <div class="footer-copyright green">
+        <div class="container">
+          © Copyright 2015 by Michael Bishoff
+        </div>
+      </div>
+    </footer>
+    
+    <script>
+      function edit(e) {
+        e.contentEditable = true;
+        e.focus();
+        e.style.backgroundColor = '#E0E0E0';
+        e.style.borderBottom = '1px solid #67A751';
+      }
+      function save(e) {
+        e.style.backgroundColor = '';
+        e.style.border = '';
+        e.contentEditable = false;
+        
+        // HTTP request to server
+      }
+      var numItems = 3;
+      function addItem() {
+        var item = document.getElementById("item");
+        var name = document.getElementById("name");
+        
+        // Must have an item
+        if (item.value != '') {
+          
+          // Add the item to the list
+          var table = document.getElementById("table");
+          table.innerHTML +=
+        '<tr id="item' + numItems + '">\
+          <td onclick="edit(this)" onfocusout="save(this)">' + item.value + '</td>\
+          <td onclick="edit(this)" onfocusout="save(this)">' + name.value + '</td>\
+          <td><a href="#!" onclick="deleteItem(\'item' + numItems + '\')"><i class="material-icons">delete</i></a></td>\
+        </tr>';
+          
+          // HTTP request to server
+          
+          // Fix any styling
+//          item.style.borderBottom = '';
+          item.className = "validate";
+          item.value = '';
+          name.value = '';
+          
+          numItems++;
+        }
+        else {
+          item.className = "invalid";
+//          item.style.borderBottom = '1px solid #ff0000'; 
+        }
+      }
+      
+      function deleteItem(itemId) {
+        var item = document.getElementById(itemId);
+        item.parentNode.removeChild(item);
+        
+        // HTTP request to server
+      }
+      
+    </script>
+    
+  </body>
+</html>

@@ -2,17 +2,66 @@
 <html ng-app>
   <head>
     <title>Express</title>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <script src="/node_modules/angular/angular.js"></script>
+    <link rel='stylesheet' href="/node_modules/materialize-css/dist/css/materialize.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/index.css'/>
+    <link rel='stylesheet' href='/stylesheets/core.css'/>
+
+    <script src="/node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
   </head>
-  <body>
-    <h1>Express</h1>
-    <p>Welcome to Express</p>
-    <div>
-      <label>Name:</label>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello {{yourName}}!</h1>
+  <body class="green">
+
+    <div class="intro red z-depth-1">
+      <h1 class="grey-text text-lighten-5">Merry Christmas!</h1>
+<!--      <h5 class="grey lighten-4 grey-text text-darken-1 round">This year's party is on Dec 27th!</h5>-->
     </div>
+    
+    <!-- Log in Field -->
+    <div id="login" class="container white z-depth-1 round">
+      <h4 class="grey-text text-darken-1 center">Login</h4>
+      <div class="row center-align">
+        <form class="col s12" onsubmit="window.location.href = '/home'">
+          <div class="row">
+            <div class="input-field col offset-s3 s3">
+              <input id="user_name" type="text" class="validate">
+              <label for="user_name">User Name</label>
+            </div>
+            <div class="input-field col s3">
+              <input id="password" type="password" class="validate">
+              <label for="password">Password</label>
+            </div>
+            <div id="submit" class="col s3">
+              <button class="btn waves-effect waves-light green" type="submit" name="action">Submit
+      <i class="material-icons right">send</i>
+                </button>
+            </div>
+          </div>
+        
+        <!-- Login with Facebook -->
+<!--
+        <div class="divider"></div>
+        
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
+-->
+        
+          </form>
+      </div>
+    </div>
+
+    <footer class="page-footer transparent bottom">
+      <div class="footer-copyright green">
+        <div class="container">
+          © Copyright 2015 by Michael Bishoff
+        </div>
+      </div>
+    </footer>
+    
   </body>
 </html>

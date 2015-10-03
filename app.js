@@ -6,7 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+//var users = require('./routes/users');
+var home = require('./routes/home');
+var wishes = require('./routes/wishes');
+var food = require('./routes/food');
 
 var app = express();
 
@@ -24,7 +27,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'static')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/home', home);
+app.use('/wishes', wishes);
+app.use('/food', food);
+
+//app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -61,6 +68,7 @@ var options = {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
+//    console.error(err);
     res.sendFile('error.html', options);
 });
 
