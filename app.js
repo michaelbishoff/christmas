@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // Require environment variables
-var env = require('./.env');
+//var env = require('./.env');
 
 // Require all of the routes
 var routes = require('./routes/index');
