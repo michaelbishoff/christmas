@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Require environment variables
+var env = require('./.env');
+
+// Require all of the routes
 var routes = require('./routes/index');
 //var users = require('./routes/users');
 var home = require('./routes/home');
@@ -12,6 +16,9 @@ var wishes = require('./routes/wishes');
 var food = require('./routes/food');
 
 var app = express();
+
+// Environment variable :D
+// console.log("TIMES == " + process.env.TIMES);
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
